@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ostad-node-app
+  namespace: production
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: ostad-node-app
+
+  template:
+    metadata:
+      labels:
+        app: ostad-node-app
+
+    spec:
+      containers:
+        - name: ostad-node-app
+          image: bepul2/ostad-node-app:v1
+
+          ports:
+            - containerPort: 3000
